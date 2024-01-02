@@ -1,0 +1,1409 @@
+[
+    {
+        "id": "763eaa02.b8a3e4",
+        "type": "tab",
+        "label": "Alarm Notifications w/Alexa",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ddd43d21.18de8",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "notify",
+        "service": "alexa_media_richard_s_echo_dot",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"message\":\"{{payload}}\",\"data\":{\"type\":\"tts\"}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1520,
+        "y": 260,
+        "wires": [
+            [
+                "6d66cc320e41c6ad"
+            ]
+        ]
+    },
+    {
+        "id": "5a95ae08.42d56",
+        "type": "inject",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "default",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Well good morning Reagan",
+        "payloadType": "str",
+        "x": 690,
+        "y": 220,
+        "wires": [
+            [
+                "15eb329a7ff1a0dc"
+            ]
+        ]
+    },
+    {
+        "id": "9f2f7756.ec36e8",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Arming",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"The alarm is \" & state & \". You have \" & arming_time & \" seconds to leave!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 880,
+        "y": 420,
+        "wires": [
+            [
+                "6469c9ab90aee983"
+            ]
+        ]
+    },
+    {
+        "id": "808be35f.a4384",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed Home",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"The alarm is set to armed home!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "15eb329a7ff1a0dc"
+            ]
+        ]
+    },
+    {
+        "id": "36c02f9d.57ff7",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Disarmed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"The alarm is \" & payload",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "15eb329a7ff1a0dc"
+            ]
+        ]
+    },
+    {
+        "id": "207e952d.4986ea",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Pending",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Please enter the disarm code now!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 460,
+        "wires": [
+            [
+                "c6f63fe269ba60c1"
+            ]
+        ]
+    },
+    {
+        "id": "c910c7bf.93dbe8",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Triggered",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Security Breach!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 380,
+        "wires": [
+            [
+                "15eb329a7ff1a0dc"
+            ]
+        ]
+    },
+    {
+        "id": "b24d1ad2.1f6fa8",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed Away",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"The alarm is set to armed away!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 260,
+        "wires": [
+            [
+                "15eb329a7ff1a0dc"
+            ]
+        ]
+    },
+    {
+        "id": "a368d8d2.e63ba8",
+        "type": "switch",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "armed_away",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "armed_home",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "disarmed",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "triggered",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "arming",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "pending",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "f7d1e2cf.61d25"
+            ],
+            [
+                "4bd48fb7.198ab"
+            ],
+            [
+                "d6fcdca5.cd96"
+            ],
+            [
+                "aa374c6e.946c6"
+            ],
+            [
+                "366a7e96.0d35a2"
+            ],
+            [
+                "f4fd44d1.4b72c8"
+            ]
+        ]
+    },
+    {
+        "id": "7804bade.a23124",
+        "type": "delay",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "9",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1910,
+        "y": 420,
+        "wires": [
+            [
+                "4ca267a0.60c308"
+            ]
+        ]
+    },
+    {
+        "id": "4e1e6d72.e01f94",
+        "type": "counter",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "init": "60",
+        "step": "10",
+        "lower": "0",
+        "upper": "",
+        "mode": "decrement",
+        "outputs": 1,
+        "x": 1770,
+        "y": 420,
+        "wires": [
+            [
+                "7804bade.a23124"
+            ]
+        ]
+    },
+    {
+        "id": "11bfd8dc.d23ec7",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "notify",
+        "service": "alexa_media_richard_s_echo_dot",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"message\":\"{{payload}}\",\"data\":{\"type\":\"tts\"}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1520,
+        "y": 420,
+        "wires": [
+            [
+                "4e1e6d72.e01f94"
+            ]
+        ]
+    },
+    {
+        "id": "3728b948.619666",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": true,
+        "domain": "notify",
+        "service": "alexa_media_richard_s_echo_dot",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [],
+        "data": "{\"message\":\"{{payload}}\",\"data\":{\"type\":\"tts\"}}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1520,
+        "y": 700,
+        "wires": [
+            [
+                "57d25a8a.941a84",
+                "3645d9a1.4c5166"
+            ]
+        ]
+    },
+    {
+        "id": "25f4b790.884568",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Arming Time",
+        "rules": [
+            {
+                "t": "set",
+                "p": "arming_time",
+                "pt": "msg",
+                "to": "60",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 420,
+        "wires": [
+            [
+                "9f2f7756.ec36e8"
+            ]
+        ]
+    },
+    {
+        "id": "4cdea225.cb6e0c",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Arming Countdown",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"You have \" & count & \" seconds remaining to leave!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2120,
+        "y": 580,
+        "wires": [
+            [
+                "ab17145497b6d30f"
+            ]
+        ]
+    },
+    {
+        "id": "f5e791ca.2a3cd",
+        "type": "delay",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "9",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "outputs": 1,
+        "x": 1930,
+        "y": 700,
+        "wires": [
+            [
+                "4e0204c3.2e2d7c"
+            ]
+        ]
+    },
+    {
+        "id": "57d25a8a.941a84",
+        "type": "counter",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "init": "60",
+        "step": "10",
+        "lower": "",
+        "upper": "",
+        "mode": "decrement",
+        "outputs": "1",
+        "x": 1770,
+        "y": 700,
+        "wires": [
+            [
+                "f5e791ca.2a3cd",
+                "127376f0.941e59"
+            ]
+        ]
+    },
+    {
+        "id": "91e9e668.270e68",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Arming Countdown",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"You have \" & count & \" seconds left to enter the disarm code!\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2120,
+        "y": 860,
+        "wires": [
+            [
+                "dc6738b0bc367914"
+            ]
+        ]
+    },
+    {
+        "id": "e1038b24.6d96e8",
+        "type": "switch",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "property": "count",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2340,
+        "y": 500,
+        "wires": [
+            [
+                "937ce063.4318e"
+            ],
+            [
+                "4cdea225.cb6e0c"
+            ]
+        ]
+    },
+    {
+        "id": "5f563bbc.aa0b44",
+        "type": "switch",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2340,
+        "y": 780,
+        "wires": [
+            [
+                "2aed0f02.f7686"
+            ],
+            [
+                "91e9e668.270e68"
+            ]
+        ]
+    },
+    {
+        "id": "a99a2ee1.598ab",
+        "type": "trigger-state",
+        "z": "763eaa02.b8a3e4",
+        "name": "Alarm Status",
+        "server": "58fe158a.2910cc",
+        "version": 4,
+        "inputs": 1,
+        "outputs": 2,
+        "exposeAsEntityConfig": "",
+        "entityId": "alarm_control_panel.master",
+        "entityIdType": "exact",
+        "debugEnabled": true,
+        "constraints": [
+            {
+                "targetType": "this_entity",
+                "targetValue": "",
+                "propertyType": "current_state",
+                "propertyValue": "new_state.state",
+                "comparatorType": "is_not",
+                "comparatorValueDatatype": "prevEntity",
+                "comparatorValue": "state"
+            }
+        ],
+        "customOutputs": [],
+        "outputInitially": false,
+        "stateType": "str",
+        "enableInput": true,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "a368d8d2.e63ba8",
+                "75a4d309cd691b08"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f7d1e2cf.61d25",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed State",
+        "rules": [
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "b24d1ad2.1f6fa8"
+            ]
+        ]
+    },
+    {
+        "id": "4bd48fb7.198ab",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed State",
+        "rules": [
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 300,
+        "wires": [
+            [
+                "808be35f.a4384"
+            ]
+        ]
+    },
+    {
+        "id": "d6fcdca5.cd96",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed State",
+        "rules": [
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 340,
+        "wires": [
+            [
+                "36c02f9d.57ff7"
+            ]
+        ]
+    },
+    {
+        "id": "aa374c6e.946c6",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed State",
+        "rules": [
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "c910c7bf.93dbe8"
+            ]
+        ]
+    },
+    {
+        "id": "366a7e96.0d35a2",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed State",
+        "rules": [
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 420,
+        "wires": [
+            [
+                "25f4b790.884568"
+            ]
+        ]
+    },
+    {
+        "id": "f4fd44d1.4b72c8",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "Armed State",
+        "rules": [
+            {
+                "t": "set",
+                "p": "state",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 460,
+        "wires": [
+            [
+                "207e952d.4986ea"
+            ]
+        ]
+    },
+    {
+        "id": "4ca267a0.60c308",
+        "type": "api-current-state",
+        "z": "763eaa02.b8a3e4",
+        "name": "Alarm Canceled",
+        "server": "58fe158a.2910cc",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "disarmed",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "alarm_control_panel.alarmo",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "canceled",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 2110,
+        "y": 420,
+        "wires": [
+            [
+                "937ce063.4318e"
+            ],
+            [
+                "be3513e4.02a72"
+            ]
+        ]
+    },
+    {
+        "id": "7899a380.97cdcc",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "60",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2110,
+        "y": 360,
+        "wires": [
+            [
+                "8af8156230489690"
+            ]
+        ]
+    },
+    {
+        "id": "be3513e4.02a72",
+        "type": "api-current-state",
+        "z": "763eaa02.b8a3e4",
+        "name": "Alarm Armed Away",
+        "server": "58fe158a.2910cc",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "armed_away",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "alarm_control_panel.alarmo",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "armed_away",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 2120,
+        "y": 500,
+        "wires": [
+            [
+                "937ce063.4318e"
+            ],
+            [
+                "e1038b24.6d96e8"
+            ]
+        ]
+    },
+    {
+        "id": "937ce063.4318e",
+        "type": "switch",
+        "z": "763eaa02.b8a3e4",
+        "name": "Reset Counter",
+        "property": "count",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "60",
+                "vt": "str"
+            },
+            {
+                "t": "lt",
+                "v": "60",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2370,
+        "y": 420,
+        "wires": [
+            [],
+            [
+                "7899a380.97cdcc"
+            ]
+        ]
+    },
+    {
+        "id": "4e0204c3.2e2d7c",
+        "type": "api-current-state",
+        "z": "763eaa02.b8a3e4",
+        "name": "Alarm Disarmed",
+        "server": "58fe158a.2910cc",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "disarmed",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "alarm_control_panel.alarmo",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "canceled",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 2110,
+        "y": 700,
+        "wires": [
+            [
+                "2aed0f02.f7686"
+            ],
+            [
+                "49aa58b3.b8ff18"
+            ]
+        ]
+    },
+    {
+        "id": "2aed0f02.f7686",
+        "type": "switch",
+        "z": "763eaa02.b8a3e4",
+        "name": "Reset Counter",
+        "property": "count",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "60",
+                "vt": "str"
+            },
+            {
+                "t": "lt",
+                "v": "60",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 2370,
+        "y": 700,
+        "wires": [
+            [],
+            [
+                "369281b5.fd7dbe"
+            ]
+        ]
+    },
+    {
+        "id": "369281b5.fd7dbe",
+        "type": "change",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "reset",
+                "pt": "msg",
+                "to": "60",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2110,
+        "y": 640,
+        "wires": [
+            [
+                "9226b6dfd2d5de6d"
+            ]
+        ]
+    },
+    {
+        "id": "49aa58b3.b8ff18",
+        "type": "api-current-state",
+        "z": "763eaa02.b8a3e4",
+        "name": "Alarm Triggered",
+        "server": "58fe158a.2910cc",
+        "version": 3,
+        "outputs": 2,
+        "halt_if": "triggered",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "entity_id": "alarm_control_panel.alarmo",
+        "state_type": "str",
+        "blockInputOverrides": false,
+        "outputProperties": [
+            {
+                "property": "canceled",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "x": 2110,
+        "y": 780,
+        "wires": [
+            [
+                "2aed0f02.f7686"
+            ],
+            [
+                "5f563bbc.aa0b44"
+            ]
+        ]
+    },
+    {
+        "id": "3645d9a1.4c5166",
+        "type": "debug",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1690,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "127376f0.941e59",
+        "type": "debug",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "count",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1890,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "ab17145497b6d30f",
+        "type": "link out",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "bf68020f98a0b642"
+        ],
+        "x": 2245,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "bf68020f98a0b642",
+        "type": "link in",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "links": [
+            "ab17145497b6d30f"
+        ],
+        "x": 1305,
+        "y": 480,
+        "wires": [
+            [
+                "11bfd8dc.d23ec7"
+            ]
+        ]
+    },
+    {
+        "id": "8af8156230489690",
+        "type": "link out",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "15e80bba7ea8fe9e"
+        ],
+        "x": 2245,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "15e80bba7ea8fe9e",
+        "type": "link in",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "links": [
+            "8af8156230489690"
+        ],
+        "x": 1665,
+        "y": 380,
+        "wires": [
+            [
+                "4e1e6d72.e01f94"
+            ]
+        ]
+    },
+    {
+        "id": "297a6c381aee8bb4",
+        "type": "link in",
+        "z": "763eaa02.b8a3e4",
+        "name": "link in 2",
+        "links": [
+            "9226b6dfd2d5de6d"
+        ],
+        "x": 1665,
+        "y": 640,
+        "wires": [
+            [
+                "57d25a8a.941a84"
+            ]
+        ]
+    },
+    {
+        "id": "9226b6dfd2d5de6d",
+        "type": "link out",
+        "z": "763eaa02.b8a3e4",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "297a6c381aee8bb4"
+        ],
+        "x": 2245,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "dc6738b0bc367914",
+        "type": "link out",
+        "z": "763eaa02.b8a3e4",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "15112c8b57ef657d"
+        ],
+        "x": 2265,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "15112c8b57ef657d",
+        "type": "link in",
+        "z": "763eaa02.b8a3e4",
+        "name": "link in 3",
+        "links": [
+            "dc6738b0bc367914"
+        ],
+        "x": 1295,
+        "y": 760,
+        "wires": [
+            [
+                "3728b948.619666"
+            ]
+        ]
+    },
+    {
+        "id": "15eb329a7ff1a0dc",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "media_player",
+        "service": "volume_set",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.richard_s_echo_dot"
+        ],
+        "data": "{\"volume_level\":\"0.6\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1210,
+        "y": 260,
+        "wires": [
+            [
+                "ddd43d21.18de8"
+            ]
+        ]
+    },
+    {
+        "id": "6d66cc320e41c6ad",
+        "type": "delay",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1780,
+        "y": 260,
+        "wires": [
+            [
+                "6f42495a550b36cb"
+            ]
+        ]
+    },
+    {
+        "id": "6f42495a550b36cb",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "media_player",
+        "service": "volume_set",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.richard_s_echo_dot"
+        ],
+        "data": "{\"volume_level\":0.4}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 2010,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6469c9ab90aee983",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "media_player",
+        "service": "volume_set",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.richard_s_echo_dot"
+        ],
+        "data": "{\"volume_level\":\"0.6\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1210,
+        "y": 420,
+        "wires": [
+            [
+                "11bfd8dc.d23ec7"
+            ]
+        ]
+    },
+    {
+        "id": "c6f63fe269ba60c1",
+        "type": "api-call-service",
+        "z": "763eaa02.b8a3e4",
+        "name": "",
+        "server": "58fe158a.2910cc",
+        "version": 5,
+        "debugenabled": false,
+        "domain": "media_player",
+        "service": "volume_set",
+        "areaId": [],
+        "deviceId": [],
+        "entityId": [
+            "media_player.richard_s_echo_dot"
+        ],
+        "data": "{\"volume_level\":\"0.6\"}",
+        "dataType": "json",
+        "mergeContext": "",
+        "mustacheAltTags": false,
+        "outputProperties": [],
+        "queue": "none",
+        "x": 1210,
+        "y": 700,
+        "wires": [
+            [
+                "3728b948.619666"
+            ]
+        ]
+    },
+    {
+        "id": "75a4d309cd691b08",
+        "type": "debug",
+        "z": "763eaa02.b8a3e4",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "58fe158a.2910cc",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": false,
+        "heartbeatInterval": 30,
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    }
+]
